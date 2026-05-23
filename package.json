@@ -1,0 +1,25 @@
+{
+  "name": "m2-dbii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "migracao.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sodasil/m2-dbII.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sodasil/m2-dbII/issues"
+  },
+  "homepage": "https://github.com/sodasil/m2-dbII#readme",
+  "dependencies": {
+    "mongodb": "^7.2.0",
+    "mysql2": "^3.22.3"
+  }
+}
