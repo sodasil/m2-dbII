@@ -13,14 +13,25 @@ async function iniciarMigracao() {
         //Conecta em ambos os bancos de dados
         mysqlConn = await mysql.createConnection(mysqlUri);
         await mongoClient.connect();
-        console.log("Conectado ao MySQL e ao MongoDB Atlas!");
+        console.log("Conectado ao MySQL e ao MongoDB Atlas!\n");
 
         const db = mongoClient.db("company");
         const collection = db.collection('employees');
 
+        //Busca no BD se já existe uma collection chamada 'emplooyes'
+        const colecoesExistentes = await db.listCollections({name: 'employees'}).toArray();
+
+        //Se o array retornar algum item (lenght > 0) a colllection existe e faz o drop da mesma para iniciar a migração novamente
+        if(colecoesExistentes.length > 0){
+            await collection.drop();
+            console.log("Collection Employees que já existia no MongoDB foi deletada para começar uma nova migração.\n");
+        } else {
+            console.log("Collection 'Employees' ainda não existe, inciando migração.\n");
+        }
+
         //Busca todos os funcionários do MySQL
         const [employees] = await mysqlConn.query('SELECT * FROM employees');
-        console.log(`Encontrados ${employees.length} funcionários para migrar.`);
+        console.log(`Encontrados ${employees.length} funcionários para migrar.\n`);
 
         const TAMANHO_LOTE = 5000;
 
