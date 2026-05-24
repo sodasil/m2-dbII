@@ -1,5 +1,9 @@
 const { MongoClient } = require('mongodb');
-const mongoUri = 'mongodb+srv://jvbbalhego_db_user:c3Zg94PQK2Ny3uUN@m2db2-cluster.7d0ysjj.mongodb.net/?appName=M2DB2-Cluster';
+require('dotenv').config();
+
+//Configurações de conexão apontando para a variável de ambiente 
+const mongoUri = process.env.MONGO_URI;
+
 function criarIndices() {
     const mongoClient = new MongoClient(mongoUri);
     mongoClient.connect().then(function() {

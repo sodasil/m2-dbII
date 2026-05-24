@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/sodasil/m2-dbII#readme",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "mongodb": "^7.2.0",
     "mysql2": "^3.22.3"
   }

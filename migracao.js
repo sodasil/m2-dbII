@@ -1,9 +1,10 @@
 const mysql = require('mysql2/promise');
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
-//Configurações de conexão
-const mysqlUri = 'mysql://root:Joao0610$@localhost:3306/employees';
-const mongoUri = 'mongodb+srv://jvbbalhego_db_user:c3Zg94PQK2Ny3uUN@m2db2-cluster.7d0ysjj.mongodb.net/?appName=M2DB2-Cluster';
+//Configurações de conexão apontando para as variáveis de ambiente 
+const mysqlUri = process.env.MYSQL_URI;
+const mongoUri = process.env.MONGO_URI;
 
 async function iniciarMigracao() {
     let mysqlConn;
